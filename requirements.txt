@@ -1,2 +1,5 @@
 django==5.0.4
 pydantic==2.7.1
+postgres==4.0
+psycopg2==2.9.9
+black==24.4.2
