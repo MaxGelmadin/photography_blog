@@ -3,3 +3,8 @@ pydantic==2.7.1
 postgres==4.0
 psycopg2==2.9.9
 black==24.4.2
+djangorestframework==3.15.1
+django-rest-swagger==2.2.0
+drf-yasg==1.21.7
+djangorestframework-camel-case==1.4.2
+setuptools==69.5.1

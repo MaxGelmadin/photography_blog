@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Lenses(models.TextChoices):
     """
     This is a class that represents the choices of different lenses.
