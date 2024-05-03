@@ -1,3 +1,9 @@
+"""
+Picture Metadata Module
+"""
+
+import uuid
+
 from django.db import models
 
 
@@ -17,7 +23,7 @@ class PictureMetadata(models.Model):
     This is a class that represents the Picture Metadata model.
     """
 
-    id = models.UUIDField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     date = models.DateField()
     iso = models.IntegerField()
     shutter_speed = models.FloatField()

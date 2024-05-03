@@ -1,6 +1,9 @@
+import uuid
+
 from django.db import models
-from photography_blog.models.session import Session
+
 from photography_blog.models.picture_metadata import PictureMetadata
+from photography_blog.models.session import Session
 
 
 class Extensions(models.TextChoices):
@@ -18,7 +21,7 @@ class Picture(models.Model):
     This is the model class of a Picture.
     """
 
-    id = models.UUIDField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     session = models.ForeignKey(
         to=Session, on_delete=models.CASCADE, verbose_name="related session"
     )

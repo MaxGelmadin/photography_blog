@@ -5,6 +5,6 @@
         "run migrations": "python src/manage.py migrate",
         "make migrations": "python src/manage.py makemigrations",
         "run django": "python src/manage.py runserver",
-        "run black": "black src/"
+        "run black": "black src/ && isort --profile black src/"
     }
 }
