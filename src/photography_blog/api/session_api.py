@@ -5,6 +5,8 @@ from rest_framework.views import APIView
 
 from photography_blog.api.entitites.session_entities import SessionRequestEntity
 from photography_blog.logic.session_logic import SessionLogic
+from photography_blog.utils.api_exceptions import NotFoundErrorApi
+from photography_blog.utils.app_exceptions import ModelNotFoundError
 
 
 class SessionView(APIView):
@@ -17,7 +19,15 @@ class SessionView(APIView):
         Get Session with id API
         """
         request_entity = SessionRequestEntity(id=id)
-        response_entity = SessionLogic.get_session(request_entity=request_entity)
+        try:
+            response_entity = SessionLogic.get_session(request_entity=request_entity)
+        except ModelNotFoundError as exc:
+            raise NotFoundErrorApi(
+                message=f"Session with id: {id} not found",
+                args=exc.args,
+                kwargs=exc.kwargs,
+                error_code=HTTPStatus.NOT_FOUND,
+            )
 
         return Response(response_entity.model_dump(), HTTPStatus.OK)
 

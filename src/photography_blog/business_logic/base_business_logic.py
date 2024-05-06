@@ -2,9 +2,12 @@ import uuid
 from abc import ABC
 from typing import Optional
 
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.db.models import QuerySet
 from pydantic import BaseModel
+
+from photography_blog.utils.app_exceptions import ModelNotFoundError
 
 
 class BaseBusinessLogic(ABC):
@@ -42,8 +45,10 @@ class BaseBusinessLogic(ABC):
         """
         Gets a model by its ID.
         """
-        model = list(self._model_entity.objects.filter(id=id))
-        return model[0] if model else None
+        try:
+            return self._model_entity.objects.get(id=id)
+        except ObjectDoesNotExist:
+            raise ModelNotFoundError(missing_id=id)
 
     def delete_by_id(self, id: uuid.UUID) -> None:
         """

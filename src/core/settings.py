@@ -59,6 +59,7 @@ REST_FRAMEWORK = {
         "djangorestframework_camel_case.render.CamelCaseJSONRenderer",
         "djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer",
     ),
+    "EXCEPTION_HANDLER": "photography_blog.utils.api_exception_handler.custom_exception_handler",
 }
 
 ROOT_URLCONF = "core.urls"
