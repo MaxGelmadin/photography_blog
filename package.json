@@ -4,7 +4,7 @@
         "pip install": "pip install -r requirements.txt",
         "run migrations": "python src/manage.py migrate",
         "make migrations": "python src/manage.py makemigrations",
-        "run django": "python src/manage.py runserver",
+        "run django": "python src/manage.py runserver 0.0.0.0:8000",
         "run black": "black src/ && isort --profile black src/"
     }
 }

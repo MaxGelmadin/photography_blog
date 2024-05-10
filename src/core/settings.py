@@ -92,8 +92,8 @@ DATABASES = {
         "NAME": "db_app_local",
         "USER": "postgres",
         "PASSWORD": "postgres",
-        "HOST": "localhost",  # Or the IP address where PostgreSQL is running
-        "PORT": "5432",  # Default PostgreSQL port
+        "HOST": "db",
+        "PORT": "5432",
     }
 }
 
